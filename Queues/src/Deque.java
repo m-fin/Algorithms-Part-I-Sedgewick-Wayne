@@ -1,3 +1,5 @@
+package edu.princeton.cs.algs4;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -125,7 +127,30 @@ public class Deque<Item> implements Iterable<Item> {
 
     // return an iterator over items in order from front to back
     public Iterator<Item> iterator() {
+        return new ListIterator();
+    }
 
+    private class ListIterator implements Iterator<Item> {
+        // Node used for iteration
+        private Node current = first;
+
+        public boolean hasNext() {
+            return current.next != null;
+        }
+
+        public Item next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException("No next element in iterator");
+            }
+
+            Item item = current.item;
+            current = current.next;
+            return item;
+        }
+
+        public void remove() {
+            throw new UnsupportedOperationException("Unsupported operation");
+        }
     }
 
     // unit testing (required)
@@ -137,11 +162,26 @@ public class Deque<Item> implements Iterable<Item> {
         String item2 = "item2";
         String item3 = "item3";
 
+
+
+        System.out.println(deque.isEmpty());
+        System.out.println(deque.size());
+
         deque.addFirst(item0);
-        deque.addLast(item1);
+        deque.addFirst(item1);
+        deque.addFirst(item2);
+        deque.addLast(item3);
 
+        Iterator iter = deque.iterator();
 
+        System.out.println(iter.hasNext());
+        iter.next();
+        iter.next();
+        iter.next();
+        System.out.println(iter.hasNext());
 
+        deque.removeFirst();
+        deque.removeLast();
     }
 
 }
