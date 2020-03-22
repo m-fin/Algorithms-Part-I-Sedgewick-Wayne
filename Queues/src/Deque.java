@@ -1,4 +1,4 @@
-package edu.princeton.cs.algs4;
+import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -162,10 +162,8 @@ public class Deque<Item> implements Iterable<Item> {
         String item2 = "item2";
         String item3 = "item3";
 
-
-
-        System.out.println(deque.isEmpty());
-        System.out.println(deque.size());
+        StdOut.println(deque.isEmpty());
+        StdOut.println(deque.size());
 
         deque.addFirst(item0);
         deque.addFirst(item1);
@@ -174,11 +172,11 @@ public class Deque<Item> implements Iterable<Item> {
 
         Iterator iter = deque.iterator();
 
-        System.out.println(iter.hasNext());
-        iter.next();
-        iter.next();
-        iter.next();
-        System.out.println(iter.hasNext());
+        StdOut.println(iter.hasNext());
+        StdOut.println(iter.next());
+        StdOut.println(iter.next());
+        StdOut.println(iter.next());
+        StdOut.println(iter.hasNext());
 
         deque.removeFirst();
         deque.removeLast();
