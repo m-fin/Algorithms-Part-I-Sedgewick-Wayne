@@ -4,8 +4,7 @@ import edu.princeton.cs.algs4.StdRandom;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class RandomizedQueue<Item>  {
-    //implements Iterable<Item>
+public class RandomizedQueue<Item> implements Iterable<Item> {
 
     private Item[] queue;
     private int n;
@@ -122,37 +121,22 @@ public class RandomizedQueue<Item>  {
 
     // unit testing (required)
     public static void main(String[] args) {
-        RandomizedQueue randomizedQueue = new RandomizedQueue();
+        RandomizedQueue<Integer> rq = new RandomizedQueue<>();
+        for (int i = 0; i < 10; ++i)
+            rq.enqueue(i);
+        Iterator<Integer> it = rq.iterator();
+        while (it.hasNext()) StdOut.print(it.next() + " ");
+        StdOut.println(" size: " + rq.size());
+        it = rq.iterator();
+        while (it.hasNext()) StdOut.print(it.next() + " ");
+        StdOut.println(" size: " + rq.size());
 
-        String item0 = "item0";
-        String item1 = "item1";
-        String item2 = "item2";
-        String item3 = "item3";
-
-        StdOut.println(randomizedQueue.isEmpty());
-        StdOut.println(randomizedQueue.size());
-
-        randomizedQueue.enqueue(item0);
-        randomizedQueue.enqueue(item1);
-        randomizedQueue.enqueue(item2);
-        randomizedQueue.enqueue(item3);
-
-        StdOut.print(randomizedQueue.n);
-
-        StdOut.println(randomizedQueue.dequeue());
-
-        StdOut.println(randomizedQueue.sample());
-
-        Iterator iter = randomizedQueue.iterator();
-
-        StdOut.println(iter.hasNext());
-
-        StdOut.println(randomizedQueue.n);
-
-        StdOut.println(iter.next());
-        StdOut.println(iter.next());
-        StdOut.println(iter.next());
-        StdOut.println(iter.hasNext());
+        for (int j = 0; j < 3; ++j) {
+            for (int i = 0; i < 3; ++i)
+                rq.dequeue();
+            it = rq.iterator();
+            while (it.hasNext()) StdOut.print(it.next() + " ");
+            StdOut.println(" size: " + rq.size());
+        }
     }
-
 }

@@ -155,31 +155,32 @@ public class Deque<Item> implements Iterable<Item> {
 
     // unit testing (required)
     public static void main(String[] args) {
-        Deque deque = new Deque();
+        Deque<Integer> deque = new Deque<>();
+        for (int i = 0; i < 10; i += 2) {
+            deque.addFirst(i);
+            deque.addLast(i + 1);
+        }
+        Iterator<Integer> it = deque.iterator();
+        while (it.hasNext()) {
+            StdOut.print(it.next() + " ");
+        }
+        StdOut.println("size: " + deque.size());
 
-        String item0 = "item0";
-        String item1 = "item1";
-        String item2 = "item2";
-        String item3 = "item3";
+        for (int i = 0; i < 3; ++i) {
+            deque.removeLast();
+            deque.removeFirst();
+        }
+        it = deque.iterator();
+        while (it.hasNext()) StdOut.print(it.next() + " ");
+        StdOut.println("size: " + deque.size());
 
-        StdOut.println(deque.isEmpty());
-        StdOut.println(deque.size());
-
-        deque.addFirst(item0);
-        deque.addFirst(item1);
-        deque.addFirst(item2);
-        deque.addLast(item3);
-
-        Iterator iter = deque.iterator();
-
-        StdOut.println(iter.hasNext());
-        StdOut.println(iter.next());
-        StdOut.println(iter.next());
-        StdOut.println(iter.next());
-        StdOut.println(iter.hasNext());
-
-        deque.removeFirst();
-        deque.removeLast();
+        for (int i = 0; i < 6; i += 2) {
+            deque.addLast(i);
+            deque.addFirst(i + 1);
+        }
+        it = deque.iterator();
+        while (it.hasNext()) StdOut.print(it.next() + " ");
+        StdOut.println(" size: " + deque.size());
     }
 
 }
